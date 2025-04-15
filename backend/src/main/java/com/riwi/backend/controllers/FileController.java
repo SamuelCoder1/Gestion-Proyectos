@@ -1,14 +1,13 @@
 package com.riwi.backend.controllers;
 
-import com.riwi.backend.application.dtos.requests.FileUploadRequest;
 import com.riwi.backend.application.dtos.responses.FileResponse;
-import com.riwi.backend.domain.entities.FileEntity;
 import com.riwi.backend.application.services.impl.FileService;
 import com.riwi.backend.domain.entities.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +36,8 @@ public class FileController {
         return ResponseEntity.ok(uploadedFiles);
     }
 
+
+
     @Operation(summary = "Get files from a project", description = "Retrieve all files associated with a specific project.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Files retrieved successfully"),
@@ -54,7 +55,7 @@ public class FileController {
             @ApiResponse(responseCode = "404", description = "File not found")
     })
     @GetMapping("/download/{fileId}")
-    public ResponseEntity<?> downloadFile(@PathVariable Long fileId) {
+    public ResponseEntity<Resource> downloadFile(@PathVariable Long fileId) {
         return fileService.downloadFile(fileId);
     }
 

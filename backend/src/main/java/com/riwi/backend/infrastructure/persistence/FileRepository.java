@@ -9,4 +9,5 @@ import java.util.List;
 public interface FileRepository extends JpaRepository<FileEntity, Long> {
     List<FileEntity> findByProject(Project project);
     List<FileEntity> findByProject_Id(Long projectId);
+
 }

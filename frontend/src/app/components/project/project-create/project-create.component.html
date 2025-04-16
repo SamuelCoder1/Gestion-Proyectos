@@ -1,0 +1,73 @@
+<div class="modal-header bg-primary text-white">
+  <h5 class="modal-title">Crear Proyecto</h5>
+  <button type="button" class="btn-close btn-close-white" (click)="closeDialog()" aria-label="Cerrar"></button>
+</div>
+
+<div class="modal-body">
+  <form (ngSubmit)="createProject()" #projectForm="ngForm">
+    <div class="mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        [(ngModel)]="project.title"
+        required
+        placeholder="Ej. Plataforma de gestión"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Descripción</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        [(ngModel)]="project.description"
+        rows="3"
+        required
+        placeholder="Describe los objetivos del proyecto..."
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="deliveryDate" class="form-label">Fecha de entrega</label>
+      <input
+        type="date"
+        class="form-control"
+        id="deliveryDate"
+        name="deliveryDate"
+        [(ngModel)]="project.deliveryDate"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Estado</label>
+      <select
+        class="form-select"
+        id="status"
+        name="status"
+        [(ngModel)]="project.status"
+        required
+      >
+        <option value="Pendiente">Pendiente</option>
+        <option value="En Progreso">En Progreso</option>
+        <option value="Completado">Completado</option>
+      </select>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="closeDialog()">Cancelar</button>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    (click)="createProject()"
+    [disabled]="!projectForm.form.valid"
+  >
+    Crear
+  </button>
+</div>

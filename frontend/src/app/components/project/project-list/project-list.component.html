@@ -1,0 +1,55 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">📋 Lista de Proyectos</h2>
+    <button class="btn btn-success" (click)="openCreateDialog()">
+      <i class="bi bi-plus-circle"></i> Crear Proyecto
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && projects.length === 0" class="alert alert-info text-center">
+    No hay proyectos disponibles por ahora. ¡Crea uno nuevo! 🚀
+  </div>
+
+  <div *ngIf="projects.length > 0" class="table-responsive">
+    <table class="table table-hover align-middle shadow-sm rounded bg-white">
+      <thead class="table-light">
+        <tr>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Fecha de entrega</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td>{{ project.title }}</td>
+          <td>{{ project.description }}</td>
+          <td>{{ project.deliveryDate | date: 'mediumDate' }}</td>
+          <td>
+            <span class="badge" [ngClass]="{
+              'bg-warning text-dark': project.status === 'pendiente',
+              'bg-success': project.status === 'completo',
+              'bg-secondary': project.status !== 'pendiente' && project.status !== 'completo'
+            }">
+              {{ project.status }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-outline-danger btn-sm" (click)="deleteProject(project.id)">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

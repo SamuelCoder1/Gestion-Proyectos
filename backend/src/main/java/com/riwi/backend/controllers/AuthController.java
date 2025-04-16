@@ -13,9 +13,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin("*")
 public class AuthController {
 
     @Autowired
@@ -25,15 +28,19 @@ public class AuthController {
     IUserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
         try {
-            String jwtToken = authService.login(loginRequest); // Usa el AuthService para iniciar sesión
-            return ResponseEntity.ok(jwtToken); // Retorna el token
+            String jwtToken = authService.login(loginRequest);
+
+            Map<String, String> response = new HashMap<>();
+            response.put("token", jwtToken);
+
+            return ResponseEntity.ok(response);
         } catch (BadCredentialsException e) {
-            return ResponseEntity.status(401).body("Credenciales inválidas");
+            return ResponseEntity.status(401).body(Collections.singletonMap("message", "Credenciales inválidas"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return ResponseEntity.status(500).body("Error en el servidor");
+            return ResponseEntity.status(500).body(Collections.singletonMap("message", "Error en el servidor"));
         }
     }
 

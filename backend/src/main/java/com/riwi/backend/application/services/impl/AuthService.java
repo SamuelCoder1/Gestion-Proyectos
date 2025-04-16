@@ -40,6 +40,10 @@ public class AuthService {
 
         // Se genera y retorna un token JWT basado en el usuario autenticado
         // Este token se puede utilizar para autenticar futuras solicitudes del usuario
+
+        System.out.println("El usuario con email " + user.getUsername() + " " +
+                "se autentico correctamente");
+
         return jwtUtil.generateToken(user);
     }
 

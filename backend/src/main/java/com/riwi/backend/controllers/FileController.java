@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/files")
-@CrossOrigin("*")
 public class FileController {
 
     @Autowired

@@ -43,7 +43,10 @@
               {{ project.status }}
             </span>
           </td>
-          <td>
+          <td class="d-flex gap-2">
+            <button class="btn btn-outline-primary btn-sm" [routerLink]="['/projects', project.id]">
+              <i class="bi bi-eye"></i> Ver Detalles
+            </button>
             <button class="btn btn-outline-danger btn-sm" (click)="deleteProject(project.id)">
               <i class="bi bi-trash"></i> Eliminar
             </button>

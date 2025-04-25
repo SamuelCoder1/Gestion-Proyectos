@@ -1,0 +1,15 @@
+<div class="file-uploader">
+  <input type="file" (change)="onFileSelected($event)" multiple />
+  <button (click)="uploadFiles()">Subir archivos</button>
+</div>
+
+<div class="file-list">
+  <h3>Archivos del proyecto</h3>
+  <ul>
+    <li *ngFor="let file of files">
+      {{ file.name }} ({{ file.type }})
+      <button (click)="downloadFile(file.id)">Descargar</button>
+      <button (click)="deleteFile(file.id)">Eliminar</button>
+    </li>
+  </ul>
+</div>

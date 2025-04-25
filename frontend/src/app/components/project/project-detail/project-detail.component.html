@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <h3 class="text-primary mb-4">📁 Detalles del Proyecto</h3>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && project" class="card shadow-sm p-4">
+    <h4 class="card-title text-center">{{ project.title }}</h4>
+    <div class="card-body">
+      <p><strong>Descripción:</strong> {{ project.description }}</p>
+      <p><strong>Fecha de entrega:</strong> {{ project.deliveryDate | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Estado:</strong>
+        <span class="badge" [ngClass]="{
+          'bg-success text-light': project.status === 'Completado',
+          'bg-warning text-dark': project.status === 'En progreso',
+          'bg-danger text-light': project.status === 'Pendiente',
+          'bg-secondary text-light': project.status !== 'Completado' && project.status !== 'En progreso' && project.status !== 'Pendiente'
+        }">{{ project.status }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !project" class="alert alert-warning text-center">
+    Proyecto no encontrado.
+  </div>
+
+  <div class="mt-4">
+    <a [routerLink]="'/projects'" class="btn btn-secondary">Regresar a la lista de proyectos</a>
+  </div>
+</div>

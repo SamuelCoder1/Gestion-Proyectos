@@ -35,17 +35,14 @@ public class FileController {
         return ResponseEntity.ok(uploadedFiles);
     }
 
-
-
     @Operation(summary = "Get files from a project", description = "Retrieve all files associated with a specific project.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Files retrieved successfully"),
-            @ApiResponse(responseCode = "404", description = "Project not found")
+            @ApiResponse(responseCode = "200", description = "Files retrieved successfully")
     })
     @GetMapping("/project/{projectId}")
     public ResponseEntity<List<FileResponse>> getFilesByProject(@PathVariable Long projectId) {
         List<FileResponse> files = fileService.getFilesByProject(projectId);
-        return files.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(files);
+        return ResponseEntity.ok(files);
     }
 
     @Operation(summary = "Download a file", description = "Download a file by its ID.")

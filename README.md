@@ -40,9 +40,7 @@ IDE for frontend: Visual Studio Code
 
 Angular CLI globally installed:
 
-bash
-Copiar
-Editar
+```bash
 npm install -g @angular/cli@19.2.7
 🔧 Backend Setup
 Open the project in IntelliJ IDEA.
@@ -52,8 +50,6 @@ Point to JDK 17 (Amazon Corretto).
 Edit src/main/resources/application.properties with your MySQL credentials:
 
 properties
-Copiar
-Editar
 spring.datasource.url=jdbc:mysql://localhost:3306/your_database
 spring.datasource.username=your_user
 spring.datasource.password=your_password
@@ -62,9 +58,7 @@ If the database does not exist, Spring Boot will create it automatically (when c
 
 Build & run:
 
-bash
-Copiar
-Editar
+```bash
 ./mvnw clean install
 ./mvnw spring-boot:run
 🖥️ Frontend Setup
@@ -72,17 +66,13 @@ From the project root, cd frontend and open in Visual Studio Code.
 
 Install dependencies:
 
-bash
-Copiar
-Editar
+```bash
 npm install
 Ensure the Java backend is running on http://localhost:8080.
 
 Start Angular dev server:
 
-bash
-Copiar
-Editar
+```bash
 ng serve -o
 Your browser will open at http://localhost:4200.
 

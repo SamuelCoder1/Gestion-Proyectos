@@ -21,6 +21,54 @@
         }">{{ project.status }}</span>
       </p>
     </div>
+
+    <hr/>
+    <h5 class="text-primary">📂 Archivos</h5>
+
+    <div class="mb-3">
+      <input type="file"
+             (change)="onFileSelected($event)"
+             multiple
+             class="form-control" />
+      <button class="btn btn-primary mt-2"
+              (click)="upload()"
+              [disabled]="!selectedFiles.length">
+        Subir {{ selectedFiles.length }} archivo(s)
+      </button>
+    </div>
+
+    <div *ngIf="files.length; else noFiles">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tamaño</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of files">
+            <td>{{ f.name }}</td>
+            <td>{{ f.size | number }} bytes</td>
+            <td>
+              <button class="btn btn-sm btn-success me-2"
+                      (click)="downloadFile(f.id)">
+                Descargar
+              </button>
+              <button class="btn btn-sm btn-danger"
+                      (click)="delete(f.id)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noFiles>
+      <div class="alert alert-info text-center">
+        No hay archivos en este proyecto
+      </div>
+    </ng-template>
   </div>
 
   <div *ngIf="!loading && !project" class="alert alert-warning text-center">
@@ -28,6 +76,8 @@
   </div>
 
   <div class="mt-4">
-    <a [routerLink]="'/projects'" class="btn btn-secondary">Regresar a la lista de proyectos</a>
+    <a [routerLink]="'/projects'" class="btn btn-secondary">
+      Regresar a la lista de proyectos
+    </a>
   </div>
 </div>

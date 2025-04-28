@@ -2,11 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FileService } from '../../../services/file.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-file-manager',
   templateUrl: './file-manager.component.html',
-  imports : [RouterModule]
+  imports : [RouterModule, CommonModule]
 })
 export class FileManagerComponent implements OnInit {
   @Input() projectId!: number;

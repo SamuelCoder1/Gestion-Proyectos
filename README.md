@@ -40,7 +40,6 @@ IDE for frontend: Visual Studio Code
 
 Angular CLI globally installed:
 
-```bash
 npm install -g @angular/cli@19.2.7
 🔧 Backend Setup
 Open the project in IntelliJ IDEA.
@@ -58,7 +57,6 @@ If the database does not exist, Spring Boot will create it automatically (when c
 
 Build & run:
 
-```bash
 ./mvnw clean install
 ./mvnw spring-boot:run
 🖥️ Frontend Setup
@@ -66,13 +64,11 @@ From the project root, cd frontend and open in Visual Studio Code.
 
 Install dependencies:
 
-```bash
 npm install
 Ensure the Java backend is running on http://localhost:8080.
 
 Start Angular dev server:
 
-```bash
 ng serve -o
 Your browser will open at http://localhost:4200.
 
@@ -112,9 +108,6 @@ IDE para frontend: Visual Studio Code
 
 Angular CLI instalado globalmente:
 
-bash
-Copiar
-Editar
 npm install -g @angular/cli@19.2.7
 🔧 Configuración del Backend
 Abre el proyecto en IntelliJ IDEA.
@@ -123,9 +116,6 @@ Apunta al JDK 17 (Amazon Corretto).
 
 Edita src/main/resources/application.properties con tus credenciales de MySQL:
 
-properties
-Copiar
-Editar
 spring.datasource.url=jdbc:mysql://localhost:3306/tu_base_de_datos
 spring.datasource.username=tu_usuario
 spring.datasource.password=tu_contraseña
@@ -134,9 +124,6 @@ Si la base de datos no existe, Spring Boot la creará automáticamente (si las c
 
 Compila y ejecuta:
 
-bash
-Copiar
-Editar
 ./mvnw clean install
 ./mvnw spring-boot:run
 🖥️ Configuración del Frontend
@@ -144,17 +131,11 @@ Desde la raíz del proyecto, cd frontend y abre en Visual Studio Code.
 
 Instala dependencias:
 
-bash
-Copiar
-Editar
 npm install
 Asegúrate de que el backend (Java) esté ejecutándose en http://localhost:8080.
 
 Inicia el servidor de desarrollo de Angular:
 
-bash
-Copiar
-Editar
 ng serve -o
 Esto abrirá automáticamente el navegador en http://localhost:4200.
 
@@ -164,9 +145,6 @@ Primero el backend (Spring Boot).
 Después el frontend (ng serve -o).
 
 📁 Estructura del Proyecto
-bash
-Copiar
-Editar
 /
 ├── backend/   # Servicio Spring Boot (Java 17, Corretto, Spring Boot 3.4.5)
 └── frontend/  # App Angular (CLI 19.2.7, Node 22.15.0, npm 10.9.2)
